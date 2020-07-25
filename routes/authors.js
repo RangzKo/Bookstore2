@@ -32,8 +32,7 @@ router.post('/', async (req, res) => {
   })
   try {
     const newAuthor = await author.save()
-    // res.redirect(`authors/${newAuthor.id}`)
-    res.redirect(`authors`)
+    res.redirect(`authors/${newAuthor.id}`)
   } catch {
     res.render('authors/new', {
       author: author,
@@ -45,7 +44,7 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const author = await Author.findById(req.params.id)
-    const books = await Book.find({ author: author.id }).limit(4).exec()
+    const books = await Book.find({ author: author.id }).limit(6).exec()
     res.render('authors/show', {
       author: author,
       booksByAuthor: books
@@ -97,4 +96,5 @@ router.delete('/:id', async (req, res) => {
     }
   }
 })
+
 module.exports = router
