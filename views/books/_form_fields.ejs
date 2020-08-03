@@ -24,8 +24,8 @@
           value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>">
   </div>
   <div class="form-item">
-    <label>Page Count</label>
-    <input type="number" name="pageCount" min="1" value="<%= book.pageCount %>">
+    <label>Price in '£'</label>
+    <input type="doubles" name="pagePrice" min="2" value="<%= book.pagePrice %>">
   </div>
 </div>
 
@@ -35,7 +35,7 @@
     <input type="file" name="cover" class="filepond">
   </div>
   <div class="form-item">
-    <label>Description</label>
+    <label>Description/Category</label>
     <textarea name="description"><%= book.description %></textarea>
   </div>
 </div>

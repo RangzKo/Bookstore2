@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-// New Book Route
+//  New Book Route
 router.get('/new', async (req, res) => {
   renderNewPage(res, new Book())
 })
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
     title: req.body.title,
     author: req.body.author,
     publishDate: new Date(req.body.publishDate),
-    pageCount: req.body.pageCount,
+    pagePrice: req.body.pagePrice,
     description: req.body.description
   })
   saveCover(book, req.body.cover)
@@ -82,7 +82,7 @@ router.put('/:id', async (req, res) => {
     book.title = req.body.title
     book.author = req.body.author
     book.publishDate = new Date(req.body.publishDate)
-    book.pageCount = req.body.pageCount
+    book.pagePrice = req.body.pagePrice
     book.description = req.body.description
     if (req.body.cover != null && req.body.cover !== '') {
       saveCover(book, req.body.cover)
@@ -134,9 +134,9 @@ async function renderFormPage(res, book, form, hasError = false) {
     }
     if (hasError) {
       if (form === 'edit') {
-        params.errorMessage = 'Error Updating Book'
+        params.errorMessage = 'Error Updating Your Book'
       } else {
-        params.errorMessage = 'Error Creating Book'
+        params.errorMessage = 'Error Creating The Book'
       }
     }
     res.render(`books/${form}`, params)
